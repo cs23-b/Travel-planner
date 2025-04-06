@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>City Results</title>
+{% endblock %}
+
+{% block body %}
+<div class="bg3">
+<div class="container mt-5">
+    <h2 class="mb-4">Results for {{ month }} between {{ min_temp }}°C and {{ max_temp }}°C{% if continent %} in {{ continent }}{% endif %}{% if good_aqi == 'on' %} with Good AQI{% endif %}</h2>
+
+    {% if cities %}
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Average Temperature (°C)</th>
+                    <th>Continent</th>
+                    {% if cities[0].get('aqi') is not none %}
+                        <th>AQI</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for city in cities %}
+                    <tr>
+                        <td>{{ city.city }}</td>
+                        <td>{{ city.country }}</td>
+                        <td>{{ city.avg_temp }}</td>
+                        <td>{{ city.continent }}</td>
+                        {% if city.aqi is not none %}
+                            <td>{{ city.aqi }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-muted">No cities found matching the criteria.</p>
+    {% endif %}
+
+    <a href="{{ url_for('get_cities_by_temp') }}" class="btn btn-secondary mt-3">Back to Search</a>
+</div>
+</div>
+{% endblock %}
+
