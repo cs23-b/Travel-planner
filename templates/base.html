@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloud Tempest</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<div class="nav">
+        <div class="container">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('get_cities_by_temp') }}">Search by Temp</a>
+            <a href="{{ url_for('get_weather') }}">Search by City</a>
+            <a href="#">Articles</a>
+        </div>
+</div>
+    {% block body %}{% endblock %}
+
+</html>
