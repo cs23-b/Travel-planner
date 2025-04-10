@@ -83,7 +83,7 @@ def travel_advice():
     db = get_db_connection()
     cursor = db.cursor()
 
-    cursor.execute("SELECT best_time, description FROM traveladvice WHERE country = %s", (country,))
+    cursor.execute("SELECT best_time, description FROM TravelAdvice WHERE country = %s", (country,))
     result = cursor.fetchone()
 
     cursor.close()
