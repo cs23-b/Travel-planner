@@ -28,7 +28,24 @@ body {
     letter-spacing: 1px;
     z-index: 1000;
 }
+.nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+.external-links a {
+    color: rgb(184, 183, 183);
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
 
+.external-links a:hover {
+    color: white;
+}
 /* Container for navigation links */
 .container {
     display: flex;
@@ -49,14 +66,17 @@ body {
 }
 
 .content {
-    height: 100vh; /* Full screen height */
+    
     display: flex;
     flex-direction: column;
     justify-content: center; /* Vertical center */
     align-items: center;     /* Horizontal center */
     
     text-align: center;
-    color: black; /* Optional: looks nice over dark images */
+    color: black; 
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
 }
 
 
@@ -120,6 +140,10 @@ h2.mb-4 {
 }
 h1{
     font-size: 80px;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+    color: white;
 }
 form {
     margin: 20px ;
@@ -157,7 +181,7 @@ input, select {
     background-image: url("/static/images/ghibli2.jpg");
     background-size: cover;
     background-position: center;
-    min-height: 100vh;
+    
     
     display: flex;
     justify-content: center;    /* centers horizontally */
@@ -178,4 +202,28 @@ input, select {
     padding-top: 70px;          /* extra top padding for fixed navbar if needed */
     padding-left: 20px;
     padding-right: 20px;
+}
+.bg4 {
+    background-color:azure;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    
+    display: flex;
+    justify-content: center;    /* centers horizontally */
+    align-items: center;        /* centers vertically */
+    padding-top: 70px;          /* extra top padding for fixed navbar if needed */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }

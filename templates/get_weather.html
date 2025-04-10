@@ -2,6 +2,44 @@
 
 {% block head %}
     <title>Weather right now</title>
+    <style>
+        .bg2 {
+            background-image: url("/static/images/ghibli_house.jpeg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        
+            min-height: 100vh; /* Keeps full height background */
+            width: 100vw;
+        
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; 
+            padding: 100px 20px 40px 20px; 
+            box-sizing: border-box;
+        
+            overflow-y: auto; 
+        }
+        .content {
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        
+            text-align: center;
+            color: black;
+        
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        
+            gap: 20px;
+            
+            padding-top:20%;
+        }
+        
+    </style>
 {% endblock %}
 
 {% block body %}
@@ -16,7 +54,7 @@
     </form>
 
     {% if error %}
-        <p style="color:red;">{{ error }}</p>
+        <p style="color:rgb(84, 78, 78);">{{ error }}</p>
     {% endif %}
 
     {% if weather_data %}

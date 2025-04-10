@@ -2,21 +2,99 @@ from flask import Flask, request, jsonify, render_template
 import requests
 import mysql.connector
 
-app = Flask(__name__)  # ✅ Define the Flask app
+app = Flask(__name__) 
 
-API_KEY = "a9b49f91afa3434d90a93038251903"  # Replace with your actual API key
+API_KEY = "a9b49f91afa3434d90a93038251903" 
 
 def get_db_connection():
     """Creates a new MySQL connection."""
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="database123",  # Replace with your MySQL password
+        password="database123", 
         database="weather_db"
     )
+    
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/cool_places')
+def cool_places():
+    db = get_db_connection()
+    cursor = db.cursor()
+
+    # Get cities with lowest average yearly temperatures (top 10)
+    cursor.execute("""
+        SELECT Country, City,
+       ROUND((
+           Jan + Feb + Mar + Apr + May + Jun +
+           Jul + Aug + Sep + Oct + Nov + `Dec`
+       ) / 12, 1) AS AvgTemp
+FROM city_temperatures
+ORDER BY AvgTemp ASC
+LIMIT 20;
+    """)
+    cool_cities = cursor.fetchall()
+    cursor.close()
+    db.close()
+
+    return render_template('cool_hot_results.html', title="Cool Places", cities=cool_cities)
+
+@app.route('/hot_places')
+def hot_places():
+    db = get_db_connection()
+    cursor = db.cursor()
+
+    # Get cities with highest average yearly temperatures (top 10)
+    cursor.execute("""
+        SELECT Country, City,
+       ROUND((
+           Jan + Feb + Mar + Apr + May + Jun +
+           Jul + Aug + Sep + Oct + Nov + `Dec`
+       ) / 12, 1) AS AvgTemp
+FROM city_temperatures
+ORDER BY AvgTemp DESC
+LIMIT 20;
+    """)
+    hot_cities = cursor.fetchall()
+    cursor.close()
+    db.close()
+
+    return render_template('cool_hot_results.html', title="Hot Places", cities=hot_cities)
+
+@app.route('/best_time')
+def best_time():
+    db = get_db_connection()
+    cursor = db.cursor()
+
+    cursor.execute("SELECT country, best_time, description FROM traveladvice")
+    results = cursor.fetchall()
+
+    cursor.close()
+    db.close()
+
+    return render_template("best_time.html", countries=results, title="Best Time to Visit Each Country")
+
+@app.route('/travel_advice')
+def travel_advice():
+    country = request.args.get('country') 
+
+    db = get_db_connection()
+    cursor = db.cursor()
+
+    cursor.execute("SELECT best_time, description FROM traveladvice WHERE country = %s", (country,))
+    result = cursor.fetchone()
+
+    cursor.close()
+    db.close()
+
+    return render_template(
+        'travel_advice.html',
+        country=country,
+        best_time=result[0] if result else None,
+        description=result[1] if result else None
+    )
 
 @app.route('/get_weather', methods=['GET'])
 def get_weather():
@@ -129,88 +207,11 @@ def get_cities_by_temp():
         continent=continent,
         good_aqi=good_aqi
     )
-
+    
+@app.route('/Articles', methods=['GET'])
+def Articles():
+    return render_template("Articles.html")
 if __name__ == '__main__':
     app.run(debug=False)
     
-    
-    
-'''
-def get_travel_cities():
-    """Fetch city names from the database."""
-    db = get_db_connection()
-    cursor = db.cursor()
-    
-    cursor.execute("SELECT city_name FROM Cities")
-    cities = [row[0] for row in cursor.fetchall()]
-    
-    cursor.close()
-    db.close()
-    
-    return cities
-
-def save_weather_bulk():
-    saved_cities = []
-    failed_cities = []
-    
-    travel_cities = get_travel_cities()  # Fetch cities from DB
-    db = get_db_connection()
-    cursor = db.cursor()
-
-    for city in travel_cities:
-        url = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={city}"
-        response = requests.get(url)
-
-        if response.status_code == 200:
-            data = response.json()
-            try:
-                temperature = data["current"]["temp_c"]
-                humidity = data["current"]["humidity"]
-                condition = data["current"]["condition"]["text"]
-
-                query = """INSERT INTO Weather (location, temperature_avg, humidity, weather_type)
-                           VALUES (%s, %s, %s, %s)
-                           ON DUPLICATE KEY UPDATE 
-                           temperature_avg = VALUES(temperature_avg), 
-                           humidity = VALUES(humidity), 
-                           weather_type = VALUES(weather_type)"""
-                values = (city, temperature, humidity, condition)
-
-                cursor.execute(query, values)
-                db.commit()
-                saved_cities.append(city)
-            except KeyError as e:
-                failed_cities.append(city)
-        else:
-            failed_cities.append(city)
-
-    cursor.close()
-    db.close()
-    return saved_cities, failed_cities  # ✅ Return lists instead of JSON response
-
-@app.route('/')
-def index():
-    return render_template("index.html")
-
-@app.route('/search_weather')
-def search_weather():
-    saved_cities, failed_cities = save_weather_bulk()  # ✅ Fetch weather & store in DB
-    return render_template("search_weather.html", saved_cities=saved_cities, failed_cities=failed_cities)
-
-@app.route('/get_cities_by_weather', methods=['GET'])
-def get_cities_by_weather():
-    user_weather = request.args.get('weather', '').lower()
-    matching_cities = []
-
-    if user_weather:
-        db = get_db_connection()
-        cursor = db.cursor()
-
-        cursor.execute("SELECT location FROM Weather WHERE weather_type LIKE %s", (f"%{user_weather}%",))
-        matching_cities = [row[0] for row in cursor.fetchall()]
-
-        cursor.close()
-        db.close()
-
-    return render_template('search_weather.html', weather=user_weather, matching_cities=matching_cities)
-'''
+  
