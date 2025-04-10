@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Travel Advice</title>
+<style>
+    .content {
+        align-items: flex-start;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10%;
+        padding-top: 3rem;
+        color: rgb(0, 0, 0);
+
+    }
+
+    h1 {
+        color: black;
+        font-size: 3rem;
+        margin-bottom: 3px;
+        margin-top: 20%;
+    }
+
+    .advice-box {
+        font-size: 1.5rem;
+        line-height: 1.8;
+        color: rgb(0, 0, 0);
+        margin-top: 1rem;
+        padding: 2rem;
+        backdrop-filter: blur(5px);
+        width: 90%;
+        max-width: 800px;
+    }
+
+    strong {
+        color: #ffd479;
+    }
+    .travel-img {
+        width: 90%;
+        max-width: 800px;
+        margin-bottom: 2rem;
+        padding: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <h1>{{ country|capitalize }}</h1>
+        <img class="travel-img"
+     src="https://source.unsplash.com/800x400/?{{ country | urlencode }},travel"
+     onerror="this.src='/static/images/que.jpeg';"
+     alt="Image of {{ country }}">
+        {% if best_time %}
+            <div class="advice-box">
+                <p><strong>Best Time to Visit:</strong> {{ best_time }}</p>
+                <p><strong>Why:</strong> {{ description }}</p>
+            </div>
+        {% else %}
+            <p style="color: rgb(39, 38, 38);">Sorry, no travel advice available for {{ country }}.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

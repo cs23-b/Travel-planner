@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Articles</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        font-family: 'Segoe UI', sans-serif;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.6);    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0; left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: -1;
+    }
+
+    h1 {
+        font-size: 4rem;
+        margin-bottom: 10px;
+        animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    p {
+        font-size: 1.5rem;
+        width: 70%;
+        text-align: center;
+        margin-bottom: 20px;
+        animation: fadeIn 2s ease-out forwards;
+    }
+
+    .link-btn {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease;
+        animation: fadeIn 2.5s ease-out forwards;
+    }
+
+    .link-btn:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .articles-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 3rem;
+        animation: fadeInUp 2s ease forwards;
+    }
+
+    .article-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 15px;
+        width: 260px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        transition: transform 0.3s ease;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    .article-card:nth-child(1) { animation-delay: 0.5s; }
+    .article-card:nth-child(2) { animation-delay: 1s; }
+    .article-card:nth-child(3) { animation-delay: 1.5s; }
+
+    .article-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .article-card h3 {
+        margin-top: 0;
+        font-size: 1.4rem;
+        color: #fff;
+    }
+
+    .article-card p {
+        font-size: 1rem;
+        color: #f0f0f0;
+    }
+
+    .article-card a {
+        color: #fff;
+        text-decoration: underline;
+        font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="overlay"></div>
+    <h1>Discover Weather. Discover Places.</h1>
+    <p>Explore cities – from warm beaches to snowy hilltops. Start your journey now.</p>
+
+    <div class="articles-section">
+      <div class="article-card">
+          <h3>Goa</h3>
+          <p>Sunny all year round with beach vibes and tropical nights.</p>
+          <a href="#">Read more →</a>
+      </div>
+      <div class="article-card">
+          <h3>Kyoto, Japan</h3>
+          <p>Walk through cherry blossom paths and fog-covered temples in springtime charm.</p>
+          <a href="#">Read more →</a>
+      </div>
+      <div class="article-card">
+          <h3>Cape Town, South Africa</h3>
+          <p>Where the ocean meets the mountains — perfect weather for adventure.</p>
+          <a href="#">Read more →</a>
+      </div>
+  </div>
+  
+{% endblock %}
