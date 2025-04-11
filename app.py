@@ -207,10 +207,25 @@ def get_cities_by_temp():
         continent=continent,
         good_aqi=good_aqi
     )
-    
+
+
 @app.route('/Articles', methods=['GET'])
 def Articles():
     return render_template("Articles.html")
+
+
+@app.route('/goa', methods=['GET'])
+def goa():
+    return render_template("goa.html")
+
+@app.route('/kyoto', methods=['GET'])
+def kyoto():
+    return render_template("kyoto.html")
+
+@app.route('/cape', methods=['GET'])
+def cape():
+    return render_template("cape.html")
+
 if __name__ == '__main__':
     app.run(debug=False)
     
