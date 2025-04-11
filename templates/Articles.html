@@ -11,8 +11,7 @@
         background-position: center;
         height: 100vh;
         font-family: 'Segoe UI', sans-serif;
-        color: white;
-        text-shadow: 2px 2px 5px rgba(0,0,0,0.6);    
+        color: white;    
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -127,8 +126,8 @@
 
 {% block body %}
     <div class="overlay"></div>
-    <h1>Discover Weather. Discover Places.</h1>
-    <p>Explore cities through their skies – from warm beaches to snowy hilltops. Start your journey now.</p>
+    <h1>Explore. Dream. Discover</h1>
+    <p>From warm beaches to snowy hilltops, start your journey now.</p>
     <a href="{{ url_for('Articles') }}" class="link-btn"></a>
 
     <div class="articles-section">
@@ -136,7 +135,7 @@
       <div class="article-card">
         <h3>A guide to summer travel</h3>
         <p>Where the ocean meets the mountains — perfect weather for adventure.</p>
-        <a href="{{ url_for('cape') }}">Read more →</a>
+        <a href="{{ url_for('summer') }}">Read more →</a>
       </div>
 
       <div class="article-card">
@@ -149,10 +148,8 @@
       <div class="article-card">
         <h3>The joy of travelling</h3>
         <p>Walk through cherry blossom paths and fog-covered temples in springtime charm.</p>
-        <a href="{{ url_for('kyoto') }}">Read more →</a>
+        <a href="{{ url_for('travelling') }}">Read more →</a>
       </div>
-    
-      
     
     </div>
     <script>

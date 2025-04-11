@@ -223,17 +223,18 @@ def Articles():
     return render_template("Articles.html")
 
 
+@app.route('/summer', methods=['GET'])
+def summer():
+    return render_template("summer.html")
+
 @app.route('/goa', methods=['GET'])
 def goa():
     return render_template("goa.html")
 
-@app.route('/kyoto', methods=['GET'])
-def kyoto():
-    return render_template("kyoto.html")
+@app.route('/travelling', methods=['GET'])
+def travelling():
+    return render_template("joy_of_travelling.html")
 
-@app.route('/cape', methods=['GET'])
-def cape():
-    return render_template("cape.html")
 
 if __name__ == '__main__':
     app.run(debug=False)

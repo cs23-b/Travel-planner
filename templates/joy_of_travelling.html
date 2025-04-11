@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>The Joy of Travelling</title>
+<style>
+    .article-container {
+        max-width: 800px;
+        margin-left: 10%;
+        margin-right: auto;
+        padding: 20px;
+    }
+    body {
+        margin: 0;
+        padding-top: 100px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #ffffff;
+        color: black;
+    }
+    .overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255);
+        z-index: -1;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 60px;
+        color: #000000;
+        padding: 20px 0;
+        max-width: 100%;
+        margin: 0;
+        transition: none;
+        opacity:100;
+        animation: none;
+    }
+
+    p {
+        text-align: left;
+        font-size: 20px;
+        margin: 10px auto 30px;
+        color: #000000;
+        width: 100%;
+    }
+
+    ul {
+        max-width: 700px;
+        margin: auto;
+        padding-left: 20px;
+        font-size: 18px;
+    }
+
+    ul li {
+        margin: 0px;
+    }
+
+    .article-img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+        border-radius: 12px;
+    }
+
+    .link-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #7e7e7e;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 30px auto 50px;
+        display: block;
+        width: fit-content;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .link-btn:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="overlay"></div>
+<div class="article-container">
+    <h1>The Joy of Travelling</h1>
+    
+    <p>Travelling is more than just visiting new places — it's a journey into the soul of the world. Each destination has a unique story to tell, a culture to discover, and experiences that linger long after you've returned home.</p>
+    
+    <img src="https://tafarisafaris.com/storage/2023/05/visit-north-america.jpg" class="article-img">
+
+    
+    <p>One of the purest joys of travelling is the escape from routine. When you're on the road, time feels different. You're not bound by the usual rules — you live in the moment, soaking in each sunrise, every new sound, every spontaneous smile from a stranger.</p>
+    
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/0b/48/f2/early-morning-atop-machu.jpg?w=1200&h=700&s=1" class="article-img">
+
+    
+    <p>For adventure lovers, travel is a thrill. Hiking in the Himalayas, surfing the waves in Bali, or diving into the coral reefs of Australia — the world offers countless opportunities to push your limits and discover what you're capable of.</p>
+    
+    <img src="https://res.cloudinary.com/hynomj8e0/image/upload/c_fit,w_1200,h_1200/qguw2pycnd3fyxbiexwu.jpg" class="article-img">
+
+    
+    <p>And yet, travel can also be peaceful. A quiet morning in a mountain cabin, a slow walk through a sleepy village, or sipping chai while watching the rain fall outside your window — these are the small, soulful moments that make travelling magical.</p>
+    
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw1_XA6O4l6cUW6Fr3N9lSK8VnB2_mo3kZCQ&s" class="article-img">
+
+    
+    <p>One of the most enriching parts of travel is connection. You meet people from every walk of life, and even if you don't share a language, you share a moment. These brief encounters can often teach you the most.</p>
+    
+    <img src="https://storage.googleapis.com/goa-app-12a91.appspot.com/2024-07-28T11%3A24%3A56.984Z7.webp?GoogleAccessId=firebase-adminsdk-zeqcj%40goa-app-12a91.iam.gserviceaccount.com&Expires=16447017600&Signature=Y6dTkbFsXNe%2BWubvTzRabymUEhjKkPnaoBeOnX0wJ5530m4lLCTHkXtbv3bkMtOscZpFFiQJv%2Fhr7G7%2B7FTAHrSbB1X6bUi5KALRwa685MF0NxDn6UcZcDv8hfWyDlJkbKC8MJMdKISU%2F7NeF3XaMNwODPJoUd1RyRIugG4TsuFYJO8lRy1otBZpDXAHCxRktMmvjJVbupFf6ddjidpl%2B8skzihQG7dk5Sp9UfvhGX5Hb8KCDXTj6WHxoLh0LxYBIMbXp6VyfvJCReGke4vkmkEJe3v4YWbBtXaLSt4Ai4bD6SSHpIOgYiPdd38QZqW%2BHWtkmmEpp8pEoc8Y2lw0iw%3D%3D" class="article-img">
+
+    
+    <p>Whether you're travelling solo, with friends, or family, the memories you make become part of who you are. Travel teaches patience, adaptability, and openness. It turns the unfamiliar into something unforgettable.</p>
+    
+    <img src="https://www.aeccglobal.com/images/easyblog_articles/112/8-Optimized-shutterstock_274387127.jpg" class="article-img">
+
+    
+    <p>In the end, the joy of travelling isn't just about the places — it's about the growth. The world is full of wonders, and every journey you take adds a new chapter to your story. So go, explore, wander. There’s so much more waiting for you.</p>
+</div>
+
+<a href="{{ url_for('Articles')}}" class="link-btn">Back to Articles</a>
+{% endblock %}
