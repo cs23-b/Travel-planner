@@ -100,11 +100,22 @@ def travel_advice():
 def get_weather():
     """Fetch weather details for a city and update the search count."""
     city = request.args.get('city')
-    if not city:
-        return render_template('get_weather.html', weather_data=None)
-
     db = get_db_connection()
     cursor = db.cursor(dictionary=True)
+
+    # Fetch top 5 searched cities
+    cursor.execute("""
+        SELECT city, temperature, humidity, condition_text, search_count 
+        FROM WeatherSearch 
+        ORDER BY search_count DESC 
+        LIMIT 5
+    """)
+    top_cities = cursor.fetchall()
+
+    if not city:
+        cursor.close()
+        db.close()
+        return render_template('get_weather.html', weather_data=None, top_cities=top_cities)
 
     cursor.execute("SELECT * FROM WeatherSearch WHERE city = %s", (city,))
     existing_weather = cursor.fetchone()
@@ -114,7 +125,7 @@ def get_weather():
         db.commit()
         cursor.close()
         db.close()
-        return render_template('get_weather.html', weather_data=existing_weather)
+        return render_template('get_weather.html', weather_data=existing_weather, top_cities=top_cities)
 
     # Fetch fresh data from API
     url = f"http://api.weatherapi.com/v1/current.json?key={API_KEY}&q={city}"
@@ -144,13 +155,11 @@ def get_weather():
 
         cursor.close()
         db.close()
-
-        return render_template('get_weather.html', weather_data=weather_data)
+        return render_template('get_weather.html', weather_data=weather_data, top_cities=top_cities)
     else:
         cursor.close()
         db.close()
-        return render_template('get_weather.html', weather_data=None, error="City not found.")
-    
+        return render_template('get_weather.html', weather_data=None, error="City not found.", top_cities=top_cities)
     
 @app.route('/get_cities_by_temp', methods=['GET'])
 def get_cities_by_temp():

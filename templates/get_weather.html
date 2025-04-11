@@ -69,6 +69,16 @@
     {% elif city %}
         <p>No weather data found for "{{ city }}".</p>
     {% endif %}
+    {% if top_cities %}
+    <div class="top-cities-box">
+        <h3>Top 5 Most Searched Cities</h3>
+        <ul class="top-cities-list">
+            {% for city in top_cities %}
+                <li>{{ city.city }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
 </div>
 </div>
 {% endblock %}
