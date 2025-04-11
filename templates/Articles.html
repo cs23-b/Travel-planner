@@ -12,6 +12,7 @@
         height: 100vh;
         font-family: 'Segoe UI', sans-serif;
         color: white;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.6);    
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -103,6 +104,12 @@
         text-decoration: underline;
         font-size: 0.9rem;
     }
+    .gallery img {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 8px;
+}
 
     /* Animations */
     @keyframes fadeIn {
@@ -121,24 +128,39 @@
 {% block body %}
     <div class="overlay"></div>
     <h1>Discover Weather. Discover Places.</h1>
-    <p>Explore cities – from warm beaches to snowy hilltops. Start your journey now.</p>
+    <p>Explore cities through their skies – from warm beaches to snowy hilltops. Start your journey now.</p>
+    <a href="{{ url_for('Articles') }}" class="link-btn"></a>
 
     <div class="articles-section">
+
+      <!-- Goa -->
       <div class="article-card">
-          <h3>Goa</h3>
-          <p>Sunny all year round with beach vibes and tropical nights.</p>
-          <a href="#">Read more →</a>
+        <h3>Goa</h3>
+        <p>Sunny all year round with beach vibes and tropical nights.</p>
+        <a href="{{ url_for('goa') }}">Read more →</a>
+
       </div>
+    
+      <!-- Kyoto -->
       <div class="article-card">
-          <h3>Kyoto, Japan</h3>
-          <p>Walk through cherry blossom paths and fog-covered temples in springtime charm.</p>
-          <a href="#">Read more →</a>
+        <h3>Kyoto, Japan</h3>
+        <p>Walk through cherry blossom paths and fog-covered temples in springtime charm.</p>
+        <a href="{{ url_for('kyoto') }}">Read more →</a>
       </div>
+    
+      <!-- Cape Town -->
       <div class="article-card">
-          <h3>Cape Town, South Africa</h3>
-          <p>Where the ocean meets the mountains — perfect weather for adventure.</p>
-          <a href="#">Read more →</a>
+        <h3>Cape Town, South Africa</h3>
+        <p>Where the ocean meets the mountains — perfect weather for adventure.</p>
+        <a href="{{ url_for('cape') }}">Read more →</a>
       </div>
-  </div>
-  
-{% endblock %}
+    
+    </div>
+    <script>
+      function toggleInfo(id) {
+        const section = document.getElementById(id);
+        section.style.display = (section.style.display === "none") ? "block" : "none";
+      }
+    </script>
+    {% endblock %}
+    
