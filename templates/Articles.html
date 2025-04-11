@@ -73,6 +73,10 @@
         width: 260px;
         backdrop-filter: blur(5px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        justify-content: center; 
         text-align: center;
         transition: transform 0.3s ease;
         opacity: 0;
@@ -102,6 +106,7 @@
         color: #fff;
         text-decoration: underline;
         font-size: 0.9rem;
+        text-align: center;
     }
     .gallery img {
     width: 100%;
@@ -134,20 +139,20 @@
 
       <div class="article-card">
         <h3>A guide to summer travel</h3>
-        <p>Where the ocean meets the mountains — perfect weather for adventure.</p>
+        <p>Golden sands, slow days, and stories written beneath the sun.</p>
         <a href="{{ url_for('summer') }}">Read more →</a>
       </div>
 
       <div class="article-card">
         <h3>Goa, India</h3>
-        <p>Sunny all year round with beach vibes and tropical nights.</p>
+        <p>The vibrant coastal state with a lively atmosphere.</p>
         <a href="{{ url_for('goa') }}">Read more →</a>
 
       </div>
     
       <div class="article-card">
         <h3>The joy of travelling</h3>
-        <p>Walk through cherry blossom paths and fog-covered temples in springtime charm.</p>
+        <p>The joy of traveling lies in discovering new places, people, and pieces of yourself along the way.</p>
         <a href="{{ url_for('travelling') }}">Read more →</a>
       </div>
     

@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>your summer guide</title>
+<style>
+    .article-container {
+        max-width: 800px;
+        margin-left: 10%; /* Adjust as needed */
+        margin-right: auto;
+        padding: 20px;
+    }
+    body {
+        margin: 0;
+        padding-top: 100px; /* Adjust this to match your navbar height */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #ffffff;
+        color: black;
+    }
+    .overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgb(255, 255, 255); /* light overlay */
+        z-index: -1;
+    }
+
+    h1 {
+        text-align: left;
+        font-size: 60px;
+        color: #000000;
+        padding: 20px;
+        max-width: 500px;
+        margin: 0;
+        padding-left: 0;
+        transition: none;
+        animation: none;
+        opacity:100;
+    }
+   
+
+
+
+    p {
+        text-align: left;
+        font-size: 20px;
+        margin: 10px auto 30px;
+        color: #000000;
+        width: 100%;
+    }
+
+    ul {
+        text-align: left;
+        max-width: 700px;
+        margin: auto;
+        padding-left: 20px;
+        font-size: 18px;
+    }
+
+    ul li {
+        margin: 0px ;
+    }
+
+    .article-img {
+        width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+
+
+    .link-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #7e7e7e;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        margin: 30px auto 50px;
+        display: block;
+        width: fit-content;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .link-btn:hover {
+        background-color: #0056b3;
+    }
+    h2 {
+    text-align: left;
+    font-size: 32px;
+    margin-top: 40px;
+    color: #000000;
+}
+</style>
+{% endblock %}
+{% block body %}
+<div class="overlay"></div>
+<div class="article-container">
+    <h1>Your Summer Travel Guide ☀️</h1>
+
+    <p>
+        Summer — a season where days stretch long and golden, where sunrises are invitations to explore, and nights are meant for stargazing by the sea. Whether you're wandering through cobbled Mediterranean streets or lounging beneath a palm tree, summer brings with it a chance to escape the ordinary.
+    </p>
+    
+        
+    <img src="https://www.elliestraveltips.com/wp-content/uploads/2024/01/sandals-Overwater-bungalows-10.jpg"  class="article-img" alt="Summer Travel" />
+        
+    <h2>1. Dream Destinations to Explore</h2>
+    <p>Here are a few destinations that truly come alive in summer:</p>
+    <ul>
+        <li><strong>Greek Islands:</strong> Azure waters, cliffside villages, and sunsets that feel like poetry.</li>
+        <li><strong>Norwegian Fjords:</strong> Perfect for those who love cool air, green valleys, and magical boat rides.</li>
+        <li><strong>Japanese Alps:</strong> Crisp mountain air, peaceful temples, and fields of summer wildflowers.</li>
+        <li><strong>Provence, France:</strong> Lavender fields, hilltop towns, and slow afternoon picnics under cypress trees.</li>
+        <li><strong>California Coast:</strong> Surf culture, scenic drives, and golden beaches from LA to Big Sur.</li>
+    </ul>
+
+    <h2>2. What to Pack (and What to Leave)</h2>
+    <p>Summer is all about comfort and lightness. Your perfect bag should include:</p>
+    <ul>
+        <li>Lightweight cotton or linen clothing</li>
+        <li>A wide-brimmed hat and polarized sunglasses</li>
+        <li>Sunscreen (SPF 50+ if you're tropical-bound!)</li>
+        <li>Reusable water bottle</li>
+        <li>Notebook or travel journal for quiet evening reflections</li>
+        <li>One great book that smells like summer</li>
+    </ul>
+
+    <h2>3. Local Foods You Shouldn’t Miss</h2>
+    <p>Let your taste buds travel too!</p>
+    <ul>
+        <li><strong>Italy:</strong> Caprese salad, limoncello, and seaside gelato</li>
+        <li><strong>Morocco:</strong> Couscous, mint tea, and tagine under the stars</li>
+        <li><strong>India:</strong> Mangoes, kulfi, and tangy summer chaats</li>
+        <li><strong>Thailand:</strong> Coconut water, fresh papaya salad, and sticky rice with mango</li>
+    </ul>
+
+    <h2>4. Activities to Fill Your Days</h2>
+    <p>Make space for stillness and adventure both:</p>
+    <ul>
+        <li>Rent a bicycle and explore a quiet village trail</li>
+        <li>Try a sunrise hike followed by breakfast in nature</li>
+        <li>Watch an open-air film beneath the stars</li>
+        <li>Take a day off from photos — just wander and feel</li>
+    </ul>
+
+    <h2>5. Safety in the Sun</h2>
+    <ul>
+        <li>Always apply sunscreen, even on cloudy days</li>
+        <li>Drink water before you feel thirsty</li>
+        <li>Keep digital copies of your passport and bookings</li>
+        <li>Be aware of local health advisories and climate conditions</li>
+    </ul>
+
+    <h2>6. Sustainable Travel Tips</h2>
+    <p>Travel isn’t just about where you go, but how you go:</p>
+    <ul>
+        <li>Say no to single-use plastic</li>
+        <li>Support small local businesses and artisans</li>
+        <li>Respect cultural traditions and dress codes</li>
+        <li>Leave nature as you found it</li>
+    </ul>
+
+    <h2>7. Moments to Remember</h2>
+    <p>Don’t just chase destinations — collect memories that stay with you long after the season fades:</p>
+    <ul>
+        <li>That first dip into cold water after a long hike</li>
+        <li>The taste of something new shared with a stranger-turned-friend</li>
+        <li>Sunset conversations that last into the night</li>
+        <li>Finding your favorite spot in an unfamiliar place</li>
+        <li>Getting lost, and finding something even better</li>
+    </ul>
+    
+    <p>
+        Wherever this summer takes you — to the edge of the ocean, to the top of a hill, or deep into your own heart — travel gently, laugh deeply, and collect every golden moment as a keepsake.
+    </p>
+
+    <a href="{{ url_for('Articles')}}" class="link-btn">Back to Articles</a>
+
+{% endblock %}
