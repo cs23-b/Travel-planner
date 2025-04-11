@@ -5,7 +5,7 @@
 <style>
     .article-container {
         max-width: 800px;
-        margin-left: 60px; /* Adjust as needed */
+        margin-left: 10%; /* Adjust as needed */
         margin-right: auto;
         padding: 20px;
     }
@@ -28,11 +28,11 @@
     h1 {
         text-align: left;
         font-size: 60px;
-        
         color: #000000;
         padding: 20px;
         max-width: 500px;
         margin: 0;
+        padding-left: 0;
     }
 
     p {
@@ -40,7 +40,7 @@
         font-size: 20px;
         margin: 10px auto 30px;
         color: #000000;
-        max-width: 700px;
+        width: 100%;
     }
 
     ul {
@@ -54,18 +54,10 @@
         margin: 0px ;
     }
 
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .gallery img {
+    .article-img {
         width: 100%;
         height: auto;
-        
+        margin: 20px 0;
     }
 
 
@@ -90,20 +82,20 @@
 {% endblock %}
 {% block body %}
 <div class="overlay"></div>
-    <div class="article-container">
-        <h1>Goa</h1>
-        <p>Known for its sunny beaches and vibrant nightlife. Here’s more to explore!</p>
+<div class="article-container">
+    <h1>Goa</h1>
+    <p>Goa is one of India's most popular tourist destinations, known for its vibrant beaches and nightlife.</p>
 
-        <ul>
-            <li><strong>Baga Beach:</strong> Ideal for water sports and beach shacks.</li>
-            <li><strong>Dudhsagar Waterfalls:</strong> Majestic falls surrounded by lush greenery.</li>
-        </ul>
+    <img src="https://im.whatshot.in/img/2020/Oct/istock-1157048446-1602065185.jpg" alt="Baga Beach" class="article-img">
 
-        <div class="gallery">
-            <img src="https://im.whatshot.in/img/2020/Oct/istock-1157048446-1602065185.jpg" alt="Baga Beach">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiK7CdaPCJ4hBO7ZVoVtczsqp4QGw46PJz7xIgaKGDVxX1vKbqHa0ekc53UFo61kIW1XzusOeZOVmyS6AQ3H1rBwLpBMJE-7xZ6Fm-3OKUtUQ8urZ9fjTp9SOD_2-8s5MH2PEsviWQB1Qg/s1600/DUDHSAGAR+(1).jpg" alt="Dudhsagar Waterfalls">
-        </div>
-    </div>
+    <p>Baga Beach is famous for its shacks, parasailing, and energetic crowd. The coastline stretches beautifully with golden sand and turquoise water.</p>
+
+    <p>Another gem of Goa is the iconic Dudhsagar Waterfalls.</p>
+
+    <img src="https://www.agoda.com/wp-content/uploads/2024/07/Featured-image-Palolem-beach-Goa-India.jpg" alt="Dudhsagar Waterfalls" class="article-img">
+
+    <p>The falls are a must-visit during monsoon, surrounded by lush forests and misty air.</p>
+</div>
     <a href="{{ url_for('Articles')}}" class="link-btn">Back to Articles</a>
 
 {% endblock %}
